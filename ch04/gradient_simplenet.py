@@ -1,5 +1,4 @@
 # coding: utf-8
-
 import sys, os
 import numpy as np
 
@@ -8,7 +7,7 @@ import numpy as np
 from pathlib import Path # new (since python3.4)
 cwd = Path(os.path.dirname(os.path.realpath(__file__)))
 pwd = cwd.parent
-sys.path.append(str(pwd))
+sys.path.insert(1, str(pwd)) # put this path at the beginning is rule of thumb
 from common.functions import softmax, cross_entropy_error
 from common.gradient import numerical_gradient
 

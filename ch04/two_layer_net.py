@@ -1,9 +1,15 @@
 # coding: utf-8
 import sys, os
-sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
+import numpy as np
+
+# 親ディレクトリのファイルをインポートするための設定
+#sys.path.append(os.pardir) #old
+from pathlib import Path # new (since python3.4)
+cwd = Path(os.path.dirname(os.path.realpath(__file__)))
+pwd = cwd.parent
+sys.path.insert(1, str(pwd)) # put this path at the beginning is rule of thumb
 from common.functions import *
 from common.gradient import numerical_gradient
-import numpy as np
 
 
 class TwoLayerNet:
@@ -77,3 +83,7 @@ class TwoLayerNet:
         grads['b1'] = np.sum(da1, axis=0)
 
         return grads
+
+# This file is intended to be used as a module, not stand alone script
+if __name__ == "__main__":
+    pass
