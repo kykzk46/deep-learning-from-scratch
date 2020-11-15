@@ -1,7 +1,14 @@
 # coding: utf-8
+
 import sys, os
-sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
+
+# 親ディレクトリのファイルをインポートするための設定
+#sys.path.append(os.pardir) #old
+from pathlib import Path # new (since python3.4)
+cwd = Path(os.path.dirname(os.path.realpath(__file__)))
+pwd = cwd.parent
+sys.path.append(str(pwd))
 from common.functions import softmax, cross_entropy_error
 from common.gradient import numerical_gradient
 
